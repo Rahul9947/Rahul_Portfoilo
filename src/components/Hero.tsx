@@ -57,7 +57,7 @@ export const Hero: React.FC = () => {
       {/* Subtle background tech ambient gradients */}
       <div
         aria-hidden="true"
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-blue-600/10 via-indigo-600/10 to-transparent blur-3xl pointer-events-none rounded-full"
+        className="absolute left-1/4 top-10 -z-10 h-[420px] w-[420px] rounded-full bg-blue-600/10 blur-[120px] pointer-events-none"
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
