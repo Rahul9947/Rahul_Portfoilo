@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { Mail, MapPin, Github, Linkedin, Send, CheckCircle2, AlertCircle } from 'lucide-react';
-import { trackEvent } from '../utils/analytics';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -39,27 +38,10 @@ export const Contact: React.FC = () => {
     }
 
     setErrors({});
-    setIsSubmitting(true);
-
-    // Simulate reliable dispatch & log to analytics
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      trackEvent('contact_submit');
-      // Store in local storage for demonstration
-      try {
-        const existingMessages = JSON.parse(localStorage.getItem('rahul_contact_messages') || '[]');
-        existingMessages.push({
-          ...formData,
-          id: Date.now().toString(),
-          timestamp: new Date().toISOString()
-        });
-        localStorage.setItem('rahul_contact_messages', JSON.stringify(existingMessages));
-      } catch (err) {
-        console.error(err);
-      }
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 600);
+    const subject = encodeURIComponent(formData.subject);
+    const body = encodeURIComponent(`Name: ${formData.name}\nReply email: ${formData.email}\n\n${formData.message}`);
+    setIsSuccess(true);
+    window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -124,7 +106,7 @@ export const Contact: React.FC = () => {
                         rel="noreferrer"
                         className="text-blue-600 dark:text-blue-400 hover:underline break-all"
                       >
-                        linkedin.com/in/rahulsharma-mca
+                        linkedin.com/in/rahul-sharma-849684279
                       </a>
                     </div>
                   </div>
@@ -141,7 +123,7 @@ export const Contact: React.FC = () => {
                         rel="noreferrer"
                         className="text-blue-600 dark:text-blue-400 hover:underline break-all"
                       >
-                        github.com/rahulsharma-dev
+                        github.com/Rahul9947
                       </a>
                     </div>
                   </div>
@@ -168,10 +150,10 @@ export const Contact: React.FC = () => {
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                    Message Sent Successfully!
+                    Open your email app to send the message
                   </h3>
                   <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
-                    Thank you for reaching out. I have received your message and will review it and reply as promptly as possible.
+                    A draft has been prepared in your email app. Please press Send there to deliver it. If no email app opens, email me directly using the address on this page.
                   </p>
                   <button
                     type="button"

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { PERSONAL_INFO, EDUCATION_LIST, SKILL_CATEGORIES, PROJECTS, EXPERIENCE_LIST } from '../data/portfolioData';
 import { X, FileDown, Printer, MapPin, Mail, Github, GraduationCap, Briefcase, Code } from 'lucide-react';
 import { downloadResumePDF } from '../utils/pdfResume';
-import { trackEvent } from '../utils/analytics';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -17,7 +16,6 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
-      trackEvent('resume_view');
     }
     return () => {
       document.body.style.overflow = 'unset';
@@ -28,7 +26,6 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   if (!isOpen) return null;
 
   const handleDownload = () => {
-    trackEvent('resume_download');
     downloadResumePDF();
   };
 
@@ -111,7 +108,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <span>·</span>
               <span className="flex items-center gap-1">
                 <Github className="w-3 h-3 text-slate-400" />
-                github.com/rahulsharma-dev
+                github.com/Rahul9947
               </span>
             </div>
           </div>
@@ -122,7 +119,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               Professional Summary
             </h2>
             <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-              MCA student at Srinath University, Jamshedpur, passionate about software development, cybersecurity, programming, and building practical technology applications. Experienced in Python, Flask, Java, C/C++, and Linux systems, with an emphasis on disciplined problem solving, device automation (ADB), and hands-on security laboratories.
+              MCA student at Srinath University with an interest in software development, programming fundamentals, databases, Linux, networking, and cybersecurity. Building practical skills through coursework and personal projects.
             </p>
           </div>
 

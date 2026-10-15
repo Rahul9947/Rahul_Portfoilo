@@ -1,0 +1,1 @@
+Apply this update by extracting the ZIP into the existing repository folder, replacing files when asked. The patch file is included as an alternative. Files to remove are listed below.

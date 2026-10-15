@@ -30,7 +30,7 @@ export function generateResumePDF(): jsPDF {
   // Contact line
   doc.setFontSize(9);
   doc.setTextColor(100, 116, 139); // slate-500
-  const contactText = `${PERSONAL_INFO.location}  |  Email: ${PERSONAL_INFO.email}  |  GitHub: github.com/rahulsharma-dev`;
+  const contactText = `${PERSONAL_INFO.location}  |  Email: ${PERSONAL_INFO.email}  |  GitHub: github.com/Rahul9947`;
   doc.text(contactText, margin, y);
   y += 7;
 
@@ -58,7 +58,7 @@ export function generateResumePDF(): jsPDF {
   doc.setFontSize(9.5);
   doc.setTextColor(51, 65, 85); // slate-700
   const summaryLines = doc.splitTextToSize(
-    "MCA student at Srinath University, Jamshedpur, passionate about software development, cybersecurity, programming, and building practical technology applications. Experienced in Python, Flask, Java, C/C++, and Linux systems, with an emphasis on disciplined problem solving, device automation (ADB), and hands-on security laboratories.",
+    "MCA student at Srinath University with an interest in software development, programming fundamentals, databases, Linux, networking, and cybersecurity. Building practical skills through coursework and personal projects.",
     contentWidth
   );
   doc.text(summaryLines, margin, y);

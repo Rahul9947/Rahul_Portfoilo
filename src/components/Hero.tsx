@@ -13,7 +13,6 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { downloadResumePDF } from '../utils/pdfResume';
-import { trackEvent } from '../utils/analytics';
 
 export const Hero: React.FC = () => {
   const roles = [
@@ -50,7 +49,6 @@ export const Hero: React.FC = () => {
   }, [displayText, isDeleting, roleIndex]);
 
   const handleDownloadResume = () => {
-    trackEvent('resume_download');
     downloadResumePDF();
   };
 
@@ -78,7 +76,7 @@ export const Hero: React.FC = () => {
                 <span>Jamshedpur, Jharkhand</span>
               </span>
               <span aria-hidden="true">·</span>
-              <span>Class of 2026</span>
+              <span>MCA · Expected 2028</span>
             </div>
 
             {/* Main Headline */}
@@ -138,7 +136,7 @@ export const Hero: React.FC = () => {
                 rel="noreferrer"
                 aria-label="GitHub Profile"
                 className="p-2 rounded-md hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
-                title="GitHub: github.com/rahulsharma-dev"
+                title="GitHub: github.com/Rahul9947"
               >
                 <Github className="w-4 h-4" />
               </a>
@@ -149,7 +147,7 @@ export const Hero: React.FC = () => {
                 rel="noreferrer"
                 aria-label="LinkedIn Profile"
                 className="p-2 rounded-md hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
-                title="LinkedIn: linkedin.com/in/rahulsharma-mca"
+                title="LinkedIn: linkedin.com/in/rahul-sharma-849684279"
               >
                 <Linkedin className="w-4 h-4" />
               </a>

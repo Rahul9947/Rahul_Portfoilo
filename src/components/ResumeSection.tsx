@@ -2,19 +2,16 @@ import React, { useState } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { FileDown, Eye, FileText, CheckCircle2 } from 'lucide-react';
 import { downloadResumePDF } from '../utils/pdfResume';
-import { trackEvent } from '../utils/analytics';
 import { ResumeModal } from './ResumeModal';
 
 export const ResumeSection: React.FC = () => {
   const [isViewerOpen, setIsViewerOpen] = useState(false);
 
   const handleDownload = () => {
-    trackEvent('resume_download');
     downloadResumePDF();
   };
 
   const handleView = () => {
-    trackEvent('resume_view');
     setIsViewerOpen(true);
   };
 
@@ -77,7 +74,7 @@ export const ResumeSection: React.FC = () => {
                 Executive Profile Summary
               </h4>
               <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                MCA student at Srinath University, Jamshedpur, passionate about software development, cybersecurity, programming, and building practical technology applications. Experienced in Python, Flask, Java, C/C++, and Linux systems, with an emphasis on disciplined problem solving, device automation (ADB), and hands-on security laboratories.
+                MCA student at Srinath University with an interest in software development, programming fundamentals, databases, Linux, networking, and cybersecurity. Building practical skills through coursework and personal projects.
               </p>
             </div>
 
@@ -92,11 +89,11 @@ export const ResumeSection: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Practical Python, Flask, Java & ADB Projects</span>
+                <span>Programming and application development projects</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Continuous TryHackMe & Networking Labs</span>
+                <span>Learning networking and security fundamentals</span>
               </div>
             </div>
 

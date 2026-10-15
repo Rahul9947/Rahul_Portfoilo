@@ -181,16 +181,18 @@ export const Projects: React.FC = () => {
                     </button>
 
                     <div className="flex items-center gap-2">
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                        title="View GitHub Repository"
-                        aria-label={`View GitHub repository for ${project.title}`}
-                      >
-                        <Github className="w-4 h-4" />
-                      </a>
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                          title="View GitHub Repository"
+                          aria-label={`View GitHub repository for ${project.title}`}
+                        >
+                          <Github className="w-4 h-4" />
+                        </a>
+                      )}
 
                       {project.liveDemoUrl && (
                         <a

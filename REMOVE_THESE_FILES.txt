@@ -1,0 +1,4 @@
+bun.lock
+src/components/AnalyticsModal.tsx
+src/components/DeveloperGuideModal.tsx
+src/utils/analytics.ts

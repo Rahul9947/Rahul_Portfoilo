@@ -11,16 +11,11 @@ import { Certifications } from './components/Certifications';
 import { ResumeSection } from './components/ResumeSection';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { AnalyticsModal } from './components/AnalyticsModal';
-import { DeveloperGuideModal } from './components/DeveloperGuideModal';
-import { trackEvent } from './utils/analytics';
 import { ArrowUp } from 'lucide-react';
 
 export default function App() {
   const [isDark, setIsDark] = useState<boolean>(true);
   const [activeSection, setActiveSection] = useState<string>('home');
-  const [isAnalyticsOpen, setIsAnalyticsOpen] = useState<boolean>(false);
-  const [isGuideOpen, setIsGuideOpen] = useState<boolean>(false);
   const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
 
   // Theme setup
@@ -49,15 +44,8 @@ export default function App() {
     });
   };
 
-  // Session analytics and scroll spy
+  // Scroll spy and back-to-top visibility
   useEffect(() => {
-    trackEvent('visit');
-
-    // Timer for active engagement seconds
-    const interval = setInterval(() => {
-      trackEvent('time_increment');
-    }, 10000);
-
     const handleScroll = () => {
       // Back to top visibility
       if (window.scrollY > 400) {
@@ -97,7 +85,6 @@ export default function App() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
-      clearInterval(interval);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -108,8 +95,6 @@ export default function App() {
       <Navbar
         isDark={isDark}
         onToggleTheme={toggleTheme}
-        onOpenAnalytics={() => setIsAnalyticsOpen(true)}
-        onOpenGuide={() => setIsGuideOpen(true)}
         activeSection={activeSection}
       />
 
@@ -128,21 +113,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer
-        onOpenGuide={() => setIsGuideOpen(true)}
-        onOpenAnalytics={() => setIsAnalyticsOpen(true)}
-      />
-
-      {/* Modals */}
-      <AnalyticsModal
-        isOpen={isAnalyticsOpen}
-        onClose={() => setIsAnalyticsOpen(false)}
-      />
-
-      <DeveloperGuideModal
-        isOpen={isGuideOpen}
-        onClose={() => setIsGuideOpen(false)}
-      />
+      <Footer />
 
       {/* Floating Back to Top Button */}
       {showBackToTop && (

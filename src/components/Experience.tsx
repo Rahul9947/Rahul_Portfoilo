@@ -51,35 +51,21 @@ export const Experience: React.FC = () => {
                 {exp.overview}
               </p>
 
-              <div>
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3">
-                  Key Responsibilities & Operations
-                </h4>
-                <ul className="space-y-2.5">
-                  {exp.responsibilities.map((resp, idx) => {
-                    const isPlaceholderText = resp.startsWith('[Placeholder');
-
-                    return (
+              {exp.responsibilities.length > 0 && (
+                <div>
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3">Key Responsibilities</h4>
+                  <ul className="space-y-2.5">
+                    {exp.responsibilities.map((resp, idx) => (
                       <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                        <CheckCircle2
-                          className={`w-4 h-4 mt-0.5 shrink-0 ${
-                            isPlaceholderText ? 'text-amber-500' : 'text-blue-500'
-                          }`}
-                        />
-                        <span className={isPlaceholderText ? 'italic text-slate-500 dark:text-slate-400 font-mono text-xs' : 'leading-relaxed'}>
-                          {resp}
-                        </span>
+                        <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0 text-blue-500" />
+                        <span className="leading-relaxed">{resp}</span>
                       </li>
-                    );
-                  })}
-                </ul>
-              </div>
-
-              {exp.isPlaceholder && (
-                <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-slate-400 dark:text-slate-500">
-                  <span>Note: Exact departmental responsibilities use editable placeholders to preserve factual accuracy.</span>
+                    ))}
+                  </ul>
                 </div>
               )}
+
+
             </div>
           ))}
         </div>

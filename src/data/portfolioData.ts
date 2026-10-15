@@ -15,11 +15,11 @@ export const PERSONAL_INFO = {
   aboutDetailed:
     "Currently pursuing my Master of Computer Applications (MCA) at Srinath University, Jamshedpur, Jharkhand. My technical journey is anchored in building reliable software applications, exploring defensive cybersecurity principles, and deepening my understanding of underlying computer architectures and network protocols.",
   location: 'Jamshedpur, Jharkhand, India',
-  email: 'rahul.sharma.mca@example.com',
-  github: 'https://github.com/rahulsharma-dev',
-  linkedin: 'https://linkedin.com/in/rahulsharma-mca',
+  email: 'rahul9947sharma@gmail.com',
+  github: 'https://github.com/Rahul9947',
+  linkedin: 'https://www.linkedin.com/in/rahul-sharma-849684279/',
   resumeFileName: 'Rahul_Sharma_Resume.pdf',
-  resumePath: '/resume/Rahul_Sharma_Resume.pdf',
+  resumePath: '/Rahul_Portfoilo/resume/Rahul_Sharma_Resume.pdf',
 };
 
 export const WHAT_I_DO: WhatIDoItem[] = [
@@ -55,11 +55,7 @@ export const EDUCATION_LIST: EducationItem[] = [
     institution: 'Srinath University',
     location: 'Jamshedpur, Jharkhand',
     status: 'Currently pursuing',
-    highlights: [
-      'Advanced computer applications curriculum focusing on software engineering and system architecture.',
-      'Hands-on laboratory coursework in network security, database management, and enterprise programming.',
-      'Active participant in technical workshops and practical system development projects.'
-    ]
+    highlights: ['Expected completion: 2028']
   },
   {
     degree: 'BCA (Bachelor of Computer Applications)',
@@ -67,11 +63,7 @@ export const EDUCATION_LIST: EducationItem[] = [
     location: 'Jamshedpur, Jharkhand',
     affiliation: 'Affiliated with Kolhan University',
     status: 'Completed',
-    highlights: [
-      'Built core foundations in computer science, structured programming (C/C++), and Java fundamentals.',
-      'Studied relational database management systems, operating systems, and computer network models.',
-      'Successfully delivered academic project implementations demonstrating software development lifecycle skills.'
-    ]
+    highlights: ['Completed in 2026']
   }
 ];
 
@@ -145,8 +137,7 @@ export const PROJECTS: Project[] = [
       'PC-to-phone bidirectional keyboard and mouse interaction',
       'Packaged standalone desktop application executable'
     ],
-    githubUrl: 'https://github.com/rahulsharma-dev/wireless-phone-controller',
-    liveDemoUrl: 'https://github.com/rahulsharma-dev/wireless-phone-controller#preview',
+    githubUrl: '',
     architectureDetails: [
       'Initializes ADB daemon via Python subprocess wrapper with automatic port 5555 forward binding.',
       'Scans local network endpoints for authorized Android device IP addresses.',
@@ -170,8 +161,7 @@ export const PROJECTS: Project[] = [
       'Database storage with relational student-course schema',
       'Responsive web interface optimized for desktop and tablet entry'
     ],
-    githubUrl: 'https://github.com/rahulsharma-dev/student-attendance-flask',
-    liveDemoUrl: 'https://github.com/rahulsharma-dev/student-attendance-flask#demo',
+    githubUrl: '',
     architectureDetails: [
       'Built on lightweight Python Flask framework utilizing clean MVC controller separation.',
       'SQLite relational database with foreign key constraints between courses, students, and attendance records.',
@@ -195,8 +185,7 @@ export const PROJECTS: Project[] = [
       'Update and manage student data records safely',
       'Clean console and menu-driven interaction architecture'
     ],
-    githubUrl: 'https://github.com/rahulsharma-dev/student-management-java',
-    liveDemoUrl: 'https://github.com/rahulsharma-dev/student-management-java#overview',
+    githubUrl: '',
     architectureDetails: [
       'Encapsulated domain models utilizing Java OOP principles (Inheritance, Polymorphism, Encapsulation).',
       'Java IO ObjectOutputStream and ObjectInputStream streams for binary file state serialization.',
@@ -218,7 +207,7 @@ export const SECURITY_JOURNEY: SecurityMilestone[] = [
       'DNS resolution flow, ARP, DHCP, and ICMP',
       'Hands-on packet inspection with Wireshark'
     ],
-    status: 'Core Competency'
+    status: 'In Progress'
   },
   {
     step: '02',
@@ -230,7 +219,7 @@ export const SECURITY_JOURNEY: SecurityMilestone[] = [
       'System log inspection (/var/log/auth.log, syslog)',
       'Termux environment setup for remote Android administration'
     ],
-    status: 'Core Competency'
+    status: 'In Progress'
   },
   {
     step: '03',
@@ -275,17 +264,10 @@ export const EXPERIENCE_LIST: ExperienceItem[] = [
     role: 'LR & Trip Department',
     company: 'Saizar Enterprises Pvt. Ltd.',
     location: 'Jamshedpur, Jharkhand',
-    period: 'Current Role',
-    overview:
-      'Working within the operational LR (Lorry Receipt) and Trip Department, contributing to logistics coordination, trip dispatch verification, and departmental documentation workflows.',
-    responsibilities: [
-      'Handling Lorry Receipts (LR) processing and trip consignment documentation with operational accuracy.',
-      'Coordinating dispatch records, consignment verifications, and trip status tracking data.',
-      'Utilizing internal computer software and database records for inventory and transport log updates.',
-      '[Placeholder: Add specific department responsibilities or operational systems used here]',
-      '[Placeholder: Add notable internal process improvements or team contributions here]'
-    ],
-    isPlaceholder: true
+    period: 'Nov 2025 – Present',
+    overview: 'Working in the LR & Trip Department since November 2025.',
+    responsibilities: [],
+    isPlaceholder: false
   }
 ];
 
