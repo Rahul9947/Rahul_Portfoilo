@@ -137,14 +137,14 @@ export const PROJECTS: Project[] = [
       'PC-to-phone bidirectional keyboard and mouse interaction',
       'Packaged standalone desktop application executable'
     ],
-    githubUrl: '',
+    githubUrl: 'https://github.com/Rahul9947/Wireless-Phone-Controller',
     architectureDetails: [
       'Initializes ADB daemon via Python subprocess wrapper with automatic port 5555 forward binding.',
       'Scans local network endpoints for authorized Android device IP addresses.',
       'Launches optimized scrcpy pipeline with tuned bitrate and frame buffer for seamless responsiveness.',
       'Gracefully handles connection drops with automated reconnect retry logic.'
     ],
-    runCommand: 'python main.py --wireless --connect <DEVICE_IP>:5555'
+    runCommand: 'WirelessPhoneController.Bat'
   },
   {
     id: 'student-attendance-system',
