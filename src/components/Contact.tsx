@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { Mail, MapPin, Github, Linkedin, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xyekvqdv";
+
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -29,21 +32,59 @@ export const Contact: React.FC = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
+
     const validationErrors = validate();
+
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
 
     setErrors({});
-    const subject = encodeURIComponent(formData.subject);
-    const body = encodeURIComponent(`Name: ${formData.name}\nReply email: ${formData.email}\n\n${formData.message}`);
-    setIsSuccess(true);
-    window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`;
-  };
+    setIsSubmitting(true);
+    setIsSuccess(false);
 
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Message could not be sent.");
+      }
+
+      setIsSuccess(true);
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Contact form error:", error);
+      alert(
+        "Unable to send your message. Please check your connection and try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <section id="contact" className="py-20 border-t border-slate-200/80 dark:border-slate-800/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -150,10 +191,10 @@ export const Contact: React.FC = () => {
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                    Open your email app to send the message
+                    Message sent successfully!
                   </h3>
                   <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
-                    A draft has been prepared in your email app. Please press Send there to deliver it. If no email app opens, email me directly using the address on this page.
+                    Thank you for contacting me. Your message has been submitted successfully, and I will get back to you soon.
                   </p>
                   <button
                     type="button"
@@ -179,11 +220,10 @@ export const Contact: React.FC = () => {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Priya Mukherjee"
-                        className={`w-full px-3.5 py-2 text-sm rounded-lg border bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${
-                          errors.name
-                            ? 'border-rose-500 dark:border-rose-500'
-                            : 'border-slate-300 dark:border-slate-700'
-                        }`}
+                        className={`w-full px-3.5 py-2 text-sm rounded-lg border bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${errors.name
+                          ? 'border-rose-500 dark:border-rose-500'
+                          : 'border-slate-300 dark:border-slate-700'
+                          }`}
                       />
                       {errors.name && (
                         <p className="flex items-center gap-1 text-xs text-rose-500 mt-1">
@@ -206,11 +246,10 @@ export const Contact: React.FC = () => {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="e.g. priya@example.com"
-                        className={`w-full px-3.5 py-2 text-sm rounded-lg border bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${
-                          errors.email
-                            ? 'border-rose-500 dark:border-rose-500'
-                            : 'border-slate-300 dark:border-slate-700'
-                        }`}
+                        className={`w-full px-3.5 py-2 text-sm rounded-lg border bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${errors.email
+                          ? 'border-rose-500 dark:border-rose-500'
+                          : 'border-slate-300 dark:border-slate-700'
+                          }`}
                       />
                       {errors.email && (
                         <p className="flex items-center gap-1 text-xs text-rose-500 mt-1">
@@ -234,11 +273,10 @@ export const Contact: React.FC = () => {
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       placeholder="e.g. Software Development Internship / Collaboration"
-                      className={`w-full px-3.5 py-2 text-sm rounded-lg border bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${
-                        errors.subject
-                          ? 'border-rose-500 dark:border-rose-500'
-                          : 'border-slate-300 dark:border-slate-700'
-                      }`}
+                      className={`w-full px-3.5 py-2 text-sm rounded-lg border bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${errors.subject
+                        ? 'border-rose-500 dark:border-rose-500'
+                        : 'border-slate-300 dark:border-slate-700'
+                        }`}
                     />
                     {errors.subject && (
                       <p className="flex items-center gap-1 text-xs text-rose-500 mt-1">
@@ -261,11 +299,10 @@ export const Contact: React.FC = () => {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Write your message here regarding internship opportunities, technical projects, or inquiries..."
-                      className={`w-full px-3.5 py-2 text-sm rounded-lg border bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${
-                        errors.message
-                          ? 'border-rose-500 dark:border-rose-500'
-                          : 'border-slate-300 dark:border-slate-700'
-                      }`}
+                      className={`w-full px-3.5 py-2 text-sm rounded-lg border bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${errors.message
+                        ? 'border-rose-500 dark:border-rose-500'
+                        : 'border-slate-300 dark:border-slate-700'
+                        }`}
                     />
                     {errors.message && (
                       <p className="flex items-center gap-1 text-xs text-rose-500 mt-1">
