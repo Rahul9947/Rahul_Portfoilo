@@ -53,11 +53,15 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section id="home" className="relative pt-12 pb-20 md:py-24 overflow-hidden">
+    <section id="home" className="relative isolate pt-16 pb-24 md:pt-24 md:pb-28 overflow-hidden">
       {/* Subtle background tech ambient gradients */}
       <div
         aria-hidden="true"
         className="absolute left-1/4 top-10 -z-10 h-[420px] w-[420px] rounded-full bg-blue-600/10 blur-[120px] pointer-events-none"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute right-0 top-1/3 -z-10 h-[320px] w-[320px] rounded-full bg-indigo-500/10 blur-[110px] pointer-events-none"
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
@@ -81,13 +85,13 @@ export const Hero: React.FC = () => {
 
             {/* Main Headline */}
             <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-950 dark:text-white leading-[1.05]">
                 {PERSONAL_INFO.name}
               </h1>
 
               {/* Sub-headline with typing indicator */}
               <div className="mt-3 flex items-center min-h-[32px] sm:min-h-[36px]">
-                <p className="text-lg sm:text-xl font-semibold text-blue-600 dark:text-blue-400">
+                <p className="text-xl sm:text-2xl font-semibold text-blue-600 dark:text-blue-400">
                   <span>{displayText}</span>
                   <span className="inline-block w-0.5 h-5 ml-1 bg-blue-600 dark:bg-blue-400 animate-pulse align-middle" />
                 </p>
@@ -103,7 +107,7 @@ export const Hero: React.FC = () => {
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all focus-visible:outline-2 focus-visible:outline-blue-500"
+                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/25 transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-blue-400"
               >
                 <span>View My Projects</span>
                 <ArrowRight className="w-4 h-4" />
@@ -129,7 +133,7 @@ export const Hero: React.FC = () => {
             {/* Professional Social Links */}
             <div className="pt-3 flex items-center gap-4 text-slate-500 dark:text-slate-400">
               <span className="text-xs font-medium text-slate-400 dark:text-slate-500">Connect:</span>
-              
+
               <a
                 href={PERSONAL_INFO.github}
                 target="_blank"
